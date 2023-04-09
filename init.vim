@@ -206,10 +206,10 @@ nnoremap <right> :bn<CR>
 " autocmd
 
 " rust format on save
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+autocmd BufWritePre *.rs lua vim.lsp.buf.format({ async=false })
 
 " go format on save
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 200)
+autocmd BufWritePre *.go lua vim.lsp.buf.format({ async=false })
 " go format imports on save
 autocmd BufWritePre *.go lua require('jiraffe7.go').goimports(1000)
 
