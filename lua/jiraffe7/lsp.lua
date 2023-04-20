@@ -99,24 +99,16 @@ cmp.setup({
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<Tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+      --behavior = cmp.ConfirmBehavior.Replace, -- Insert is default
+      select = true, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
-    --['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    --['<C-f>'] = cmp.mapping.scroll_docs(4),
-    --['<C-Space>'] = cmp.mapping.complete(),
-    --['<C-e>'] = cmp.mapping.close(),
-    --['<CR>'] = cmp.mapping.confirm({
-    --  behavior = cmp.ConfirmBehavior.Insert,
-    --  select = true,
-    --})
-  },
+  }),
 
   -- Installed sources
   sources = {
