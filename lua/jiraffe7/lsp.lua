@@ -46,6 +46,16 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>a', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>F', function() vim.lsp.buf.format({ async=true }) end, bufopts)
+
+  -- Syntax highlighting for LSP semantic tokens
+  -- https://neovim.io/doc/user/lsp#lsp-semantic-highlight
+  vim.api.nvim_set_hl(0, '@lsp.mod.documentation.rust', {link = 'Special'}) -- link to the group Special
+  --vim.api.nvim_set_hl(0, '@lsp.mod.documentation.rust', {ctermfg=6, fg='#8ec07c'}) -- manually set to the same values as Special
+
+  -- Hide all semantic highlights
+  --for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  --  vim.api.nvim_set_hl(0, group, {})
+  --end
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
