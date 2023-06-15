@@ -94,6 +94,7 @@ lspconfig.gopls.setup {
       analyses = {
 	unusedparams = true,
 	shadow = true,
+	ST1006 = false, -- self is a contextually acceptable receiver name -- https://staticcheck.io/docs/checks/#ST1006
       },
       staticcheck = true,
     }
