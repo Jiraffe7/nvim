@@ -1,7 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'justinmk/vim-sneak'
+"Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
 "Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
@@ -38,6 +39,9 @@ call plug#end()
 lua require('jiraffe7')
 
 let mapleader=" "
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
 " Window mappings
 nnoremap <leader>o :split<CR>
@@ -130,9 +134,11 @@ au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1500}
 nmap <leader>w :w<CR>
 
 set scrolloff=2
-" let g:sneak#s_next = 1
+"let g:sneak#s_next = 1
 " Always draw sign column. Prevent buffer moving when adding/deleting sign.
 set signcolumn=yes
+
+set colorcolumn=120,240
 
 " Decent wildmenu
 set wildmenu
@@ -150,6 +156,7 @@ set mouse=a " Enable mouse usage (all modes) in terminals
 " ; as :
 nnoremap ; :
 " map <C-;> since ; is mapped to :
+" map <C-,> for symmetry
 nnoremap <C-;> ;
 nnoremap <C-,> ,
 
