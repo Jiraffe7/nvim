@@ -101,6 +101,26 @@ lspconfig.gopls.setup {
   }
 }
 
+lspconfig.pyright.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true
+      }
+    }
+  },
+  single_file_support = true,
+}
+
 
 -- Setup Completion
 cmp.setup({
