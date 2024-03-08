@@ -134,6 +134,17 @@ lspconfig.zls.setup {
   },
 }
 
+local capabilities_utf8 = cmp_nvim_lsp.default_capabilities()
+capabilities_utf8.offsetEncoding = "utf-8"
+
+lspconfig.clangd.setup {
+  capabilities = capabilities_utf8,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
 
 -- Setup Completion
 cmp.setup({
