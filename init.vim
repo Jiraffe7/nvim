@@ -53,6 +53,10 @@ nnoremap <leader>l <C-w>l
 set splitright
 set splitbelow
 
+" Move from the yank register to the unnamed register
+" so that paste from yank after deleting
+nnoremap <leader>p :let @"=@0<CR>
+
 " Copy paste mappings
 vnoremap <leader>c "+y
 vnoremap <leader>v "+p
@@ -150,6 +154,10 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+
+" Back and Forward centered please
+nnoremap <silent> <C-o> <C-o>zz
+nnoremap <silent> <C-i> <C-i>zz
 
 set mouse=a " Enable mouse usage (all modes) in terminals
 
