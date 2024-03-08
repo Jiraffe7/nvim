@@ -31,6 +31,9 @@ Plug 'hrsh7th/vim-vsnip'
 " To enable more of the features of rust-analyzer, such as inlay hints and more!
 " Plug 'simrat39/rust-tools.nvim'
 
+" Copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " Load Lua config
@@ -42,6 +45,25 @@ let mapleader=" "
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
+
+" Copilot
+let g:copilot_no_tab_map = 1
+let g:copilot_assume_mapped = 1
+" Disable auto copilot completion
+let g:copilot_filetypes = {
+	\ '*': v:false,
+	\ 'rust': v:false,
+	\ }
+inoremap <M-CR> <Plug>(copilot-accept-line)
+inoremap <M-BS> <Plug>(copilot-dismiss)
+" <C-o> exits insert mode, runs command, and returns to insert mode
+inoremap <M-C-BS> <C-o>:let b:copilot_enabled = 0<CR>
+inoremap <M-C-\> <C-o>:let b:copilot_enabled = 1<CR>
+inoremap <M-l> <Plug>(copilot-accept-word)
+inoremap <M-n> <Plug>(copilot-next)
+inoremap <M-p> <Plug>(copilot-previous)
+" macos opt-right is recognised as M-f
+inoremap <M-f> <Plug>(copilot-accept-word)
 
 " Window mappings
 nnoremap <leader>o :split<CR>
