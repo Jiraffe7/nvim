@@ -68,14 +68,19 @@ lspconfig.rust_analyzer.setup {
   flags = {
     debounce_text_changes = 150,
   },
-  -- cmd = { "rust-analyzer" } -- default
-  cmd = { "rustup", "run", "stable", "rust-analyzer" }, -- run rust-analyzer when installed using rustup
+  cmd = { "rust-analyzer" }, -- default
+  -- cmd = { "rustup", "run", "stable", "rust-analyzer" }, -- run rust-analyzer when installed using rustup
   -- rust-analyzer settings
   -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
   settings = {
     ["rust-analyzer"] = {
-      checkOnSave = {
-        command = "clippy"
+      -- rust = {
+      --   analyzerTargetDir = true
+      -- },
+      -- checkOnSave = false, -- should still get errors in the editor if you invoke build manually
+      check = {
+        command = "clippy",
+	-- extraArgs = { "--target-dir", "/tmp/rust-analyzer-check" } -- https://github.com/rust-lang/rust-analyzer/issues/6007
       },
     }
   }
