@@ -126,6 +126,14 @@ lspconfig.pyright.setup {
   single_file_support = true,
 }
 
+lspconfig.zls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
 
 -- Setup Completion
 cmp.setup({
